@@ -7,7 +7,6 @@ function agregarAmigo(){
     //Validar la entrada, si está vacío, mostrar un alert con un mensaje de error
     if(nombre == "" ){
         alert("Por favor, inserte un nombre");
-        //-agregarAmigo()-; Corrigiendo, Este codigo es inncesario ya que no es necesario iniciar la funcion de nuevo, esto causa un bucle infinito del error
     }
     else {//Actualizar el array de amigos
         amigos.push(nombre);        
@@ -17,9 +16,6 @@ function agregarAmigo(){
     document.getElementById("amigo").value = "";
     actualizarLista();
 }
-
-/*Crea una función que recorra el array amigos y agregue cada nombre como un elemento <li> dentro 
-de una lista HTML. Usa innerHTML para limpiar la lista antes de agregar nuevos elementos.*/
 
 function actualizarLista(){
     //Obtener el elemento de la lista
@@ -34,4 +30,29 @@ function actualizarLista(){
         elementoLista.textContent = amigos[i]; //Se asigna el "textContent" del array amigos correspondiente
         lista.appendChild(elementoLista); //appendChild: Agrega un elemento como hijo de otro. En este caso agrega un <li> a la lista <ul>
     }
+}
+
+/* Escribe una función que seleccione de manera aleatoria uno de los nombres almacenados en el array amigos. 
+Usa Math.random() y Math.floor() para obtener un índice aleatorio.*/
+
+function sortearAmigo(){
+    //Validar que haya amigos disponibles antes de sortear
+    if(amigos.length > 0){
+        //Generar un índice aleatorio
+        let index = Math.floor(Math.random()*amigos.length);
+
+        //Obtener el nombre sorteado
+        let nombreSorteado = amigos[index];
+
+        //Mostrar el resultado
+        let lista = document.getElementById("resultado");
+        lista.innerHTML = "";
+        let elementoLista = document.createElement("li");
+        elementoLista.textContent = `Tu amigo secreto es: ${nombreSorteado}`;
+        lista.appendChild(elementoLista);
+    }
+    else{
+        alert("Vaya... No hay amigos para sortear. Ingresa el nombre de tus amigos para comenzar")
+    }
+
 }
