@@ -22,9 +22,7 @@ function actualizarLista(){
 
     //Iterar sobre el arreglo
     for(var i = 0; i < amigos.length; i++){
-        let elementoLista = document.createElement("li"); //Crea un elemento <li> para la lista <ul> seleccionada en la variable "lista"
-        elementoLista.textContent = amigos[i]; //Se asigna el "textContent" del array amigos correspondiente
-        lista.appendChild(elementoLista); //appendChild: Agrega un elemento como hijo de otro. En este caso agrega un <li> a la lista <ul>
+        llenarLista(lista, amigos[i]);
     }
 }
 
@@ -39,9 +37,7 @@ function sortearAmigo(){
 
         //Mostrar el resultado
         let lista = obtenerLista("resultado");
-        let elementoLista = document.createElement("li");
-        elementoLista.textContent = `Tu amigo secreto es: ${nombreSorteado}`;
-        lista.appendChild(elementoLista);
+        llenarLista(lista, `Tu amigo secreto es: ${nombreSorteado}`);
     }
     else{
         alert("Vaya... No hay amigos para sortear. Ingresa el nombre de tus amigos para comenzar")
@@ -52,4 +48,10 @@ function obtenerLista(id){
     let lista = document.getElementById(id); //Obtener el elemento de la lista
     lista.innerHTML = ""; //Limpiar la lista existente
     return lista; //Regresa la lista vacia
+}
+
+function llenarLista(lista, elementoParaAgregar){
+    let elementoLista = document.createElement("li"); //Crea un elemento <li> para la lista <ul> seleccionada en la variable "lista"
+    elementoLista.textContent = elementoParaAgregar; //Se asigna el "textContent" del array "amigos" correspondiente
+    lista.appendChild(elementoLista); //appendChild: Agrega un elemento como hijo de otro. En este caso agrega un <li> a la lista <ul>
 }
