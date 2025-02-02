@@ -38,6 +38,8 @@ function sortearAmigo(){
         //Mostrar el resultado
         let lista = obtenerLista("resultado");
         llenarLista(lista, `Tu amigo secreto es: ${nombreSorteado}`);
+        amigos.splice(index, 1); // "splice" elimina (1) elemento en la posicion (index)
+        actualizarLista();
     }
     else{
         alert("Vaya... No hay amigos para sortear. Ingresa el nombre de tus amigos para comenzar")
